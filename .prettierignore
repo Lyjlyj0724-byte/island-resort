@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-*
+package-lock.json
+public
+*.md
+*.woff2
+*.webp
+*.wav
+docs/artwork-preview.webp
+docs/hero.webp

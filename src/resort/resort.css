@@ -1,0 +1,1235 @@
+@font-face {
+  font-family: 'Island Latin';
+  src: url('/fonts/island-latin.woff2') format('woff2');
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: #344e49;
+  font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+  border: 0;
+  background: none;
+}
+button:focus-visible,
+input:focus-visible,
+canvas:focus-visible {
+  outline: 2px solid #a16655;
+  outline-offset: 4px;
+}
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
+}
+button {
+  touch-action: manipulation;
+}
+.resort-app {
+  height: 100svh;
+  min-height: 360px;
+  overflow: hidden;
+  position: relative;
+  background: #b8d8df;
+}
+.resort-canvas {
+  position: absolute;
+  inset: 0;
+}
+.resort-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #f8f3df65, transparent 45%), linear-gradient(0deg, #e3eee185, transparent 20%);
+}
+.resort-header {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  top: 27px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 12;
+}
+.resort-header > * {
+  pointer-events: auto;
+}
+.resort-brand {
+  text-align: left;
+  padding: 0;
+}
+.resort-brand > span {
+  font:
+    36px/1 'Island Latin',
+    serif;
+}
+.resort-brand i {
+  font-size: 21px;
+  font-style: normal;
+  color: #ab755a;
+}
+.resort-brand small {
+  display: block;
+  letter-spacing: 0.3em;
+  font-size: 8px;
+  margin-top: 10px;
+}
+.resort-tools {
+  display: flex;
+  gap: 8px;
+}
+.resort-tools button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #fff9;
+  border-radius: 50%;
+  background: #f7f4e4c9;
+}
+.resort-welcome {
+  position: absolute;
+  left: 5%;
+  top: 26%;
+  padding: 28px 30px 30px;
+  background: #fbf4e5de;
+  backdrop-filter: blur(6px);
+  border: 1px solid #ffffff9c;
+  border-radius: 4px 42px 4px 4px;
+  max-width: 440px;
+  box-shadow: 0 12px 60px #34514a0c;
+}
+.resort-eyebrow {
+  font:
+    9px/1.8 'Island Latin',
+    sans-serif;
+  letter-spacing: 0.18em;
+  color: #7d8070;
+}
+.resort-welcome h1 {
+  font-family: 'Songti SC', 'SimSun', serif;
+  font-size: 42px;
+  line-height: 1.45;
+  font-weight: 400;
+  margin: 18px 0;
+}
+.resort-welcome p {
+  font-size: 12px;
+  line-height: 2.1;
+  color: #61746b;
+}
+.resort-welcome small {
+  display: block;
+  font-size: 10px;
+  margin-top: 18px;
+  letter-spacing: 0.06em;
+  color: #7b8779;
+}
+.resort-primary {
+  background: #355b51;
+  color: #fff7e5;
+  border-radius: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 13px 20px;
+  font-size: 12px;
+  min-height: 44px;
+  transition: background 0.2s;
+}
+.resort-primary:hover {
+  background: #23483f;
+}
+.resort-primary:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.resort-welcome .resort-primary {
+  margin-top: 23px;
+}
+.resort-location {
+  position: absolute;
+  left: 34px;
+  top: 113px;
+  display: flex;
+  gap: 6px;
+  font-size: 11px;
+  color: #4c6b65;
+}
+.resort-dock {
+  position: absolute;
+  bottom: 49px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  background: #faf4e7ed;
+  padding: 7px 13px;
+  border: 1px solid #fff9;
+  border-radius: 50px;
+  box-shadow: 0 10px 35px #254e4524;
+  z-index: 12;
+  max-width: 94vw;
+}
+.resort-dock button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 76px;
+  padding: 9px 11px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+.resort-dock button:hover {
+  background: #e6e8d7;
+}
+.resort-dock button span {
+  font-size: 10px;
+}
+.resort-hint {
+  position: absolute;
+  bottom: 134px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  background: #f6f4e290;
+  border-radius: 20px;
+  padding: 7px 12px;
+  white-space: nowrap;
+}
+.resort-credit {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: #52746d;
+  pointer-events: none;
+}
+.resort-credit span {
+  margin: 0 8px;
+}
+.resort-pin {
+  white-space: nowrap;
+  font-size: 10px;
+  background: #fff8e7e8;
+  border-radius: 24px;
+  padding: 7px 10px;
+  border: 1px solid #fff9;
+  box-shadow: 0 3px 15px #294e3e1f;
+  color: #385b50;
+  transition: transform 0.2s;
+}
+.resort-pin:hover {
+  transform: translateY(-3px);
+  background: #fff;
+}
+.resort-pin > span {
+  margin-right: 5px;
+  color: #b47b54;
+}
+.pin-birthday {
+  background: #f9e0d8;
+}
+.resort-loading,
+.resort-recovery {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 13px;
+  background: #c5ded8;
+}
+.resort-recovery {
+  padding: 35px;
+}
+.resort-recovery button {
+  text-decoration: underline;
+}
+.resort-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+.resort-shade {
+  position: absolute;
+  inset: 0;
+  background: #183e4133;
+  backdrop-filter: blur(2px);
+}
+.resort-panel {
+  position: relative;
+  background: #faf4e6;
+  border: 1px solid #fff9;
+  box-shadow: 0 20px 80px #183e4140;
+  width: 470px;
+  max-width: 100%;
+  border-radius: 22px;
+  padding: 35px 28px 28px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  outline: 0;
+}
+.resort-close {
+  position: absolute;
+  right: 16px;
+  top: 15px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: #eee8d9;
+  display: grid;
+  place-items: center;
+}
+.resort-panel > h2 {
+  font-family: 'Songti SC', 'SimSun', serif;
+  font-size: 29px;
+  font-weight: 400;
+  margin: 13px 0 10px;
+}
+.resort-panel-intro {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #7c8170;
+  margin-bottom: 23px;
+}
+.activity-tabs,
+.wall-tabs {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid #d8dacb;
+  margin-bottom: 18px;
+}
+.activity-tabs button,
+.wall-tabs button {
+  font-size: 11px;
+  padding: 11px 13px;
+  border-bottom: 2px solid transparent;
+}
+.activity-tabs .active,
+.wall-tabs .active {
+  border-bottom-color: #517365;
+  color: #315246;
+}
+.scene-photo {
+  background: #fffcf3;
+  padding: 9px 9px 12px;
+  box-shadow: 0 3px 12px #6b685c0d;
+}
+.scene-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(230px, 44vh, 470px);
+  object-fit: contain;
+  background: #f1eadb;
+}
+.scene-photo figcaption {
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.8;
+  margin-top: 11px;
+  color: #7b7d6f;
+}
+.photo-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 12px;
+  font-size: 10px;
+}
+.photo-pagination button {
+  width: 35px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+}
+.scene-photo + .resort-primary,
+.photo-pagination + .resort-primary {
+  margin-top: 18px;
+  width: 100%;
+}
+.resort-game p,
+.dining-activity > p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #768171;
+  margin-bottom: 16px;
+}
+.resort-game canvas {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  background: #2b7b8f;
+  touch-action: none;
+}
+.game-status {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 15px 0;
+}
+.resort-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+.resort-game > .resort-primary {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+}
+.surf-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  margin: 15px 0;
+}
+.surf-control input {
+  flex: 1;
+  min-width: 0;
+  accent-color: #527f72;
+  min-height: 34px;
+}
+.surf-progress {
+  height: 4px;
+  border-radius: 4px;
+  background: #dce4d2;
+  overflow: hidden;
+}
+.surf-progress i {
+  display: block;
+  height: 100%;
+  background: #618c77;
+  transition: width 0.1s;
+}
+.dish-options {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.dish-options button {
+  flex: 1;
+  min-width: 95px;
+  border: 1px solid #d4d6c5;
+  border-radius: 12px;
+  padding: 15px 8px;
+  font-size: 11px;
+}
+.dish-options button span {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+.dish-options .chosen {
+  background: #e5ead7;
+  border-color: #6c8a73;
+}
+.served-table {
+  margin: 25px 0;
+  padding: 32px 20px;
+  text-align: center;
+  border: 1px dashed #b5bba3;
+  border-radius: 50%;
+  background: #efe8d7;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+.served-table span,
+.served-table p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #7b816c;
+}
+.served-table strong {
+  font-family: serif;
+  font-size: 23px;
+  font-weight: 400;
+}
+.resort-wall {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 10px 3px;
+}
+.resort-wall button {
+  padding: 8px 8px 14px;
+  background: #fffaf0;
+  box-shadow: 0 4px 15px #625a3c18;
+  transform: rotate(-3deg);
+}
+.resort-wall button:nth-child(2) {
+  transform: rotate(3deg);
+}
+.resort-wall img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  display: block;
+}
+.resort-wall span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.8;
+  margin-top: 9px;
+}
+.wall-enlarged img {
+  display: block;
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+}
+.wall-enlarged p {
+  text-align: center;
+  font-size: 12px;
+  margin: 14px;
+}
+.wall-enlarged .resort-actions button {
+  min-height: 40px;
+  font-size: 12px;
+}
+.empty-album {
+  text-align: center;
+  padding: 55px 15px;
+  color: #8a8b74;
+}
+.empty-album h3 {
+  font-family: serif;
+  font-size: 22px;
+  margin: 15px;
+  font-weight: 400;
+}
+.empty-album p {
+  font-size: 12px;
+  line-height: 2;
+}
+.resort-birthday {
+  text-align: center;
+  padding: 14px 0;
+}
+.resort-birthday h2 {
+  font-family: serif;
+  font-size: 27px;
+  margin: 16px 0;
+  font-weight: 400;
+}
+.resort-birthday > p {
+  font-size: 12px;
+  line-height: 2;
+  margin: 12px 0 24px;
+}
+.resort-quiet {
+  font-size: 11px;
+  text-decoration: underline;
+  display: block;
+  margin: 18px auto;
+}
+.birthday-cake {
+  position: relative;
+  width: 210px;
+  height: 200px;
+  margin: 12px auto;
+}
+.cake-base {
+  position: absolute;
+  left: 25px;
+  top: 102px;
+  width: 160px;
+  height: 65px;
+  background: #e4b69e;
+  border-radius: 0 0 70px 70px/0 0 22px 22px;
+  color: #fff0d4;
+  padding-top: 18px;
+  font: 27px 'Island Latin';
+}
+.cake-top {
+  position: absolute;
+  left: 25px;
+  top: 76px;
+  width: 160px;
+  height: 50px;
+  background: #fff6de;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 8px 0 #f3d5bc;
+}
+.cake-plate {
+  position: absolute;
+  left: 7px;
+  top: 144px;
+  width: 196px;
+  height: 44px;
+  border-radius: 50%;
+  background: #b9c8b6;
+  z-index: -1;
+}
+.cake-candle {
+  position: absolute;
+  width: 9px;
+  height: 47px;
+  background: repeating-linear-gradient(45deg, #d6a08b 0 5px, #f4e2bc 5px 10px);
+  left: 100px;
+  top: 49px;
+  z-index: 2;
+}
+.cake-candle i {
+  position: absolute;
+  width: 12px;
+  height: 24px;
+  bottom: 48px;
+  left: -1px;
+  background: #ffc85b;
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: 0 0 22px #ffbf4e;
+  animation: flame 1s infinite alternate;
+}
+.cake-stars {
+  position: absolute;
+  inset: 0;
+  color: #c38d40;
+  font-size: 38px;
+  line-height: 1.8;
+  pointer-events: none;
+}
+.resort-letter {
+  text-align: left;
+  border-top: 1px solid #d5d8c3;
+  margin-top: 28px;
+  padding-top: 24px;
+}
+.resort-letter h3 {
+  font-family: serif;
+  font-size: 23px;
+  font-weight: 400;
+}
+.resort-letter p {
+  font-size: 13px;
+  line-height: 2;
+  margin: 17px 0;
+}
+.resort-letter > span {
+  display: block;
+  text-align: right;
+  font: 28px 'Island Latin';
+}
+.resort-panel:focus-visible {
+  outline: none;
+}
+@keyframes flame {
+  to {
+    transform: scale(0.8, 1.08) rotate(4deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 760px) {
+  .resort-header {
+    left: 20px;
+    right: 20px;
+    top: 22px;
+  }
+  .resort-brand > span {
+    font-size: 28px;
+  }
+  .resort-tools button {
+    width: 33px;
+    height: 33px;
+  }
+  .resort-welcome {
+    left: 18px;
+    right: 18px;
+    top: auto;
+    bottom: 58px;
+    padding: 22px;
+    max-width: none;
+    background: #faf4e9ed;
+  }
+  .resort-welcome h1 {
+    font-size: 30px;
+    line-height: 1.35;
+    margin: 10px 0;
+  }
+  .resort-welcome p {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .resort-welcome .resort-primary {
+    margin-top: 16px;
+  }
+  .resort-welcome small {
+    margin-top: 10px;
+    font-size: 9px;
+  }
+  .resort-welcome .resort-eyebrow {
+    font-size: 8px;
+  }
+  .resort-location {
+    left: 20px;
+    top: 96px;
+    font-size: 10px;
+  }
+  .resort-dock {
+    bottom: 42px;
+    max-width: calc(100vw - 20px);
+    padding: 5px 6px;
+    border-radius: 24px;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  .resort-dock button {
+    min-width: 47px;
+    padding: 9px 6px;
+    gap: 5px;
+  }
+  .resort-dock button span {
+    font-size: 9px;
+  }
+  .resort-dock svg {
+    width: 17px;
+    height: 17px;
+  }
+  .resort-hint {
+    bottom: 118px;
+    font-size: 9px;
+  }
+  .resort-credit {
+    font-size: 8px;
+    bottom: 16px;
+  }
+  .resort-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+  .resort-panel {
+    width: 100%;
+    max-height: calc(100svh - 20px);
+    padding: 32px 19px 22px;
+  }
+  .resort-panel > h2 {
+    font-size: 25px;
+  }
+  .resort-panel-intro {
+    margin-bottom: 15px;
+  }
+  .scene-photo img {
+    height: 39vh;
+  }
+  .resort-wall {
+    gap: 13px;
+  }
+  .resort-wall img {
+    height: 160px;
+  }
+  .resort-pin {
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+  .resort-birthday h2 {
+    font-size: 24px;
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .resort-welcome {
+    top: 90px;
+    bottom: 35px;
+    width: 380px;
+    left: 24px;
+    padding: 16px;
+  }
+  .resort-welcome h1 {
+    font-size: 25px;
+    display: inline-block;
+    margin: 7px 0;
+  }
+  .resort-welcome p {
+    font-size: 10px;
+  }
+  .resort-welcome small {
+    display: none;
+  }
+  .resort-welcome .resort-primary {
+    margin-top: 10px;
+    padding: 9px 14px;
+    min-height: 36px;
+  }
+  .resort-dock {
+    bottom: 24px;
+    padding: 3px 8px;
+  }
+  .resort-dock button {
+    padding: 6px;
+    min-width: 65px;
+  }
+  .resort-hint,
+  .resort-credit {
+    display: none;
+  }
+  .resort-overlay {
+    padding: 10px;
+  }
+  .resort-panel {
+    padding: 25px;
+    max-height: calc(100svh - 20px);
+  }
+  .scene-photo img {
+    height: 50vh;
+  }
+}
+
+/* Compact photo markers leave scene objects visible. Touch uses one tap, not hover. */
+.memory-marker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #2c514a;
+  transform: translateY(-16px);
+  filter: drop-shadow(0 2px 4px #18392d30);
+}
+.marker-icon {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fffaf0e6;
+  border: 1px solid #ffffffb0;
+  transition:
+    background 0.18s,
+    transform 0.18s;
+}
+.marker-tooltip {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translate(-50%, 5px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: 11px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #fffaf0;
+  box-shadow: 0 4px 16px #153b3624;
+  transition:
+    opacity 0.18s,
+    transform 0.18s;
+}
+.memory-marker:focus-visible .marker-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.memory-marker:focus-visible {
+  outline-offset: -6px;
+  border-radius: 50%;
+}
+@media (hover: hover) {
+  .memory-marker:hover .marker-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+  .memory-marker:hover .marker-icon {
+    background: #fff;
+    transform: scale(1.12);
+  }
+}
+@media (max-width: 440px) {
+  .resort-tools {
+    gap: 4px;
+  }
+  .resort-tools button {
+    width: 31px;
+    height: 34px;
+  }
+  .resort-brand > span {
+    font-size: 25px;
+  }
+  .marker-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.inspect-bar {
+  margin: 0 0 20px;
+}
+
+.inspect-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.inspect-actions .inspect-bar {
+  font-size: 11px;
+}
+
+/* Nearby destinations share the same scale and photo interaction. */
+.resort-places {
+  position: absolute;
+  left: 34px;
+  top: 112px;
+  z-index: 12;
+}
+.region-switch {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid #fff9;
+  border-radius: 30px;
+  background: #faf5e8eb;
+  box-shadow: 0 4px 18px #214b3520;
+}
+.region-switch button {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 22px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.region-switch button[aria-pressed='true'] {
+  background: #355b51;
+  color: #fff6e5;
+}
+.region-switch button:hover {
+  background: #e2e6d4;
+  color: #355b51;
+}
+.region-switch .journey-overview {
+  font-size: 10px;
+  padding: 8px 12px;
+}
+.resort-places .resort-location {
+  position: static;
+  margin: 10px 8px 0;
+  align-items: center;
+  font-size: 10px;
+  background: #f5f4e59c;
+  width: fit-content;
+  border-radius: 12px;
+  padding: 5px 8px;
+}
+@media (max-width: 760px) {
+  .resort-places {
+    top: 96px;
+    left: 20px;
+  }
+  .region-switch button {
+    min-height: 36px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  .region-switch .journey-overview {
+    font-size: 10px;
+  }
+  .resort-places .resort-location {
+    font-size: 9px;
+    margin-top: 7px;
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .resort-places {
+    top: 87px;
+  }
+  .resort-places .resort-location {
+    display: none;
+  }
+}
+
+.resort-marker-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.resort-marker-layer .memory-marker {
+  pointer-events: auto;
+}
+
+.resort-time {
+  position: relative;
+}
+.resort-header {
+  z-index: 14;
+}
+.resort-tools .resort-time-options {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  width: 230px;
+  padding: 10px;
+  border: 1px solid #ffffffad;
+  border-radius: 18px;
+  background: #faf5e9f5;
+  box-shadow: 0 12px 40px #102c3d30;
+  backdrop-filter: blur(14px);
+  color: #35554d;
+}
+.resort-time-options p {
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  padding: 7px 9px 10px;
+  color: #788477;
+}
+.resort-tools .resort-time-options button {
+  width: 100%;
+  height: auto;
+  min-height: 53px;
+  border: 0;
+  background: none;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  text-align: left;
+}
+.resort-time-options button span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.resort-time-options strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.resort-time-options small {
+  font-size: 10px;
+  color: #7b867b;
+}
+.resort-tools .resort-time-options button[aria-pressed='true'] {
+  background: #e4e9d9;
+}
+.resort-tools .resort-time-options button:hover {
+  background: #edf0e4;
+}
+.resort-vignette {
+  opacity: var(--day-vignette, 1);
+  transition: opacity 2s;
+}
+.resort-brand,
+.resort-credit {
+  color: var(--scene-ink, #344e49);
+  transition: color 2s;
+}
+@media (max-width: 440px) {
+  .resort-tools .resort-time-options {
+    right: -36px;
+    top: 44px;
+    width: 218px;
+  }
+}
+
+/* Full collages remain intact; expand them into the scrollable memory panel. */
+.photo-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 38px;
+  margin: 0 0 8px;
+  border: 1px solid #d3d9c5;
+  border-radius: 8px;
+  font-size: 11px;
+  background: #f1efdf;
+}
+.photo-expand:hover {
+  background: #e6eadb;
+}
+.scene-photo.photo-expanded img {
+  height: auto;
+  max-height: none;
+  width: 100%;
+  object-fit: contain;
+}
+.resort-panel > .resort-close {
+  position: sticky;
+  float: right;
+  top: 0;
+  right: auto;
+  margin-top: -20px;
+  margin-right: -12px;
+  margin-bottom: -15px;
+  z-index: 3;
+}
+@media (max-width: 760px) {
+  .resort-panel > .resort-close {
+    margin-top: -17px;
+    margin-right: -3px;
+  }
+}
+@media (max-width: 440px) {
+  .region-switch button {
+    padding: 8px 10px;
+    gap: 5px;
+  }
+  .region-switch .journey-overview {
+    padding: 8px 9px;
+  }
+  .resort-places {
+    left: 15px;
+    right: 15px;
+    width: fit-content;
+    max-width: calc(100% - 30px);
+  }
+}
+
+/* Keep the four stops and overview accessible on narrow screens. */
+@media (max-width: 440px) {
+  .region-switch {
+    gap: 1px;
+  }
+  .region-switch button {
+    font-size: 10px;
+    padding: 8px 8px;
+    gap: 4px;
+  }
+  .region-switch button svg {
+    width: 12px;
+    height: 12px;
+  }
+  .region-switch .journey-overview {
+    font-size: 9px;
+    padding: 8px 7px;
+  }
+}
+
+/* A light paper-like arrival, with motion disabled by the global preference rule. */
+@keyframes memory-shade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes memory-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.resort-shade {
+  animation: memory-shade-in 0.2s ease-out;
+}
+.resort-panel {
+  animation: memory-panel-in 0.24s cubic-bezier(0.2, 0.7, 0.2, 1);
+  box-shadow:
+    0 18px 65px #153c4130,
+    inset 0 1px 0 #fff8;
+}
+.resort-tools > button,
+.region-switch button,
+.resort-dock button {
+  transition:
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.resort-tools > button[aria-pressed='true'] {
+  background: #e3e9d8;
+  box-shadow: inset 0 0 0 1px #52746755;
+}
+@media (max-width: 760px) {
+  .resort-dock button span {
+    font-size: 10.5px;
+    line-height: 1.3;
+  }
+  .resort-hint {
+    font-size: 10px;
+    line-height: 1.4;
+    max-width: calc(100vw - 24px);
+    text-align: center;
+    white-space: normal;
+  }
+  .resort-credit {
+    font-size: 9px;
+  }
+  .scene-photo figcaption {
+    font-size: 11px;
+  }
+}
+@media (max-width: 360px) {
+  .resort-header {
+    left: 14px;
+    right: 14px;
+  }
+  .resort-brand > span {
+    font-size: 21px;
+  }
+  .resort-brand i {
+    font-size: 17px;
+  }
+  .resort-brand small {
+    font-size: 7px;
+    letter-spacing: 0.2em;
+  }
+  .resort-tools {
+    gap: 2px;
+  }
+  .resort-tools button {
+    width: 28px;
+  }
+  .resort-dock button {
+    min-width: 44px;
+    padding-inline: 4px;
+  }
+  .resort-dock button span {
+    font-size: 10px;
+  }
+}

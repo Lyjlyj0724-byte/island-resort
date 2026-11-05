@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="island resort">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9c9d1"/>
+      <stop offset="1" stop-color="#f4ecd8"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c9a92"/>
+      <stop offset="1" stop-color="#2f4f4a"/>
+    </linearGradient>
+    <clipPath id="frame">
+      <rect x="1" y="1" width="62" height="62" rx="16"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect x="1" y="1" width="62" height="62" fill="url(#sky)"/>
+    <circle cx="46" cy="17" r="9.5" fill="#f0c08d" opacity="0.45"/>
+    <circle cx="46" cy="17" r="5.6" fill="#f6d9a8"/>
+    <rect x="1" y="37" width="62" height="26" fill="url(#sea)"/>
+    <path d="M1 37h62" stroke="#f4ecd8" stroke-opacity="0.35" stroke-width="1.2"/>
+    <path d="M5 53.5c4.5-7.5 11-12 18-12.6 7.4-0.7 14.6 2.6 19.4 8.2 2.8 3.2 6.6 4.8 11 4.8H5z" fill="#6f8a63"/>
+    <path d="M12 53.8c2.6-2.8 6.2-4.4 10-4.4 5 0 9.4 1.8 12.4 4.4H12z" fill="#e2cfa8" opacity="0.92"/>
+    <path d="M25.5 47.5c-0.6-3.4-2.2-6.2-1-9.4" stroke="#2f4f4a" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M24.6 38.2c-2.6-2.2-5.4-2.8-8-2.4 2.4 2.2 5 3.2 8 2.4z" fill="#4c6a51"/>
+    <path d="M24.8 38.1c1.8-3 4.2-4.6 6.8-4.6-1.4 2.8-3.7 4.4-6.8 4.6z" fill="#4c6a51"/>
+    <path d="M24.9 38.3c-0.4-3.6 0.8-6.4 3-8.2 0.8 3 0 5.6-3 8.2z" fill="#6f8a63"/>
+    <path d="M24.5 38.4c-3-0.8-5.2-2.6-6.2-5 2.8 0.2 4.8 1.8 6.2 5z" fill="#6f8a63"/>
+    <path d="M4 50.2q6-3 12 0t12 0 12 0 12 0" stroke="#f4ecd8" stroke-opacity="0.55" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path d="M9 57q5-2.6 10 0t10 0 10 0 10 0" stroke="#f4ecd8" stroke-opacity="0.32" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  </g>
+  <rect x="1" y="1" width="62" height="62" rx="16" fill="none" stroke="#2f4f4a" stroke-opacity="0.18" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,3 @@
+# 问题反馈入口配置
+# 仓库地址里的 YOUR_USERNAME 需要换成你自己的 GitHub 用户名或组织名。
+blank_issues_enabled: false

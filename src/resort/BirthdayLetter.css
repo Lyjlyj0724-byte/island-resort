@@ -1,0 +1,249 @@
+.gift-envelope {
+  width: 100%;
+  max-width: 360px;
+  margin: 18px auto 0;
+  isolation: isolate;
+  text-align: left;
+}
+.gift-envelope-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.8s cubic-bezier(0.22, 0.7, 0.2, 1);
+  position: relative;
+  z-index: 2;
+}
+.gift-envelope-paper-wrap {
+  min-height: 0;
+  overflow: hidden;
+  padding-inline: 10px;
+}
+.gift-envelope-paper {
+  position: relative;
+  margin: 7px 0 0;
+  padding: 27px 25px 160px;
+  border: 1px solid #eadacb;
+  border-radius: 3px;
+  background: linear-gradient(110deg, #fffaf0, #fffdf6 48%, #fcf3e5);
+  box-shadow: 0 3px 16px #93697818;
+  transform: translateY(105px) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: center bottom;
+  transition:
+    transform 0.7s cubic-bezier(0.18, 0.75, 0.2, 1),
+    opacity 0.35s,
+    visibility 0s 0.7s;
+}
+.gift-envelope-paper:before {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #eacfd066;
+  pointer-events: none;
+}
+.gift-envelope-paper-heart {
+  display: block;
+  margin-bottom: 17px;
+  color: #c68894;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
+}
+.gift-envelope-paper h3 {
+  font-family: 'Songti SC', 'SimSun', serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #765159;
+  margin: 0 0 20px;
+}
+.gift-envelope-paper p {
+  font-size: 13px;
+  line-height: 2.05;
+  color: #6a5e59;
+  margin: 0 0 18px;
+  overflow-wrap: anywhere;
+}
+.gift-envelope-signature {
+  font-family: 'Songti SC', 'SimSun', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: right;
+  color: #985f70;
+  margin: 27px 0 0;
+}
+.gift-envelope-button {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  min-height: 215px;
+  border-radius: 8px;
+  color: #9c6575;
+  background: none;
+  transition: margin-top 0.8s cubic-bezier(0.22, 0.7, 0.2, 1);
+  z-index: 3;
+  -webkit-tap-highlight-color: transparent;
+}
+.gift-envelope-button:focus-visible {
+  outline: 2px solid #b7788d;
+  outline-offset: 5px;
+}
+.gift-envelope-art {
+  display: block;
+  position: relative;
+  height: 190px;
+  perspective: 900px;
+  filter: drop-shadow(0 9px 9px #895a6d18);
+}
+.gift-envelope-back {
+  position: absolute;
+  inset: 46px 0 0;
+  background: linear-gradient(135deg, #dca2b3, #e8b8c4);
+  border: 1px solid #dba0b2;
+  border-radius: 7px;
+  z-index: 1;
+}
+.gift-envelope-folds {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 100%;
+  height: 144px;
+  z-index: 3;
+  border-radius: 0 0 7px 7px;
+  overflow: hidden;
+}
+.gift-envelope-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46px;
+  height: 110px;
+  transform-origin: 50% 0;
+  transform: rotateX(0deg);
+  transition: transform 0.6s cubic-bezier(0.35, 0.1, 0.25, 1);
+  z-index: 4;
+}
+.gift-envelope-flap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.gift-envelope-seal {
+  position: absolute;
+  left: calc(50% - 19px);
+  top: 131px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #dba0a9, #b57588);
+  border: 2px solid #e8b9be;
+  box-shadow:
+    0 2px 5px #91607130,
+    inset 0 0 0 2px #bb7c8c50;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  transition:
+    opacity 0.2s,
+    transform 0.35s;
+}
+.gift-envelope-seal svg {
+  width: 17px;
+  height: 17px;
+  fill: #f6d6d8;
+  stroke: #a8647b;
+  stroke-width: 0.6;
+}
+.gift-envelope-recipient {
+  position: absolute;
+  left: 21px;
+  bottom: 19px;
+  color: #9c6677;
+  font-family: 'Songti SC', 'SimSun', serif;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  z-index: 4;
+}
+.gift-envelope-action {
+  display: block;
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-align: center;
+  line-height: 1.6;
+}
+.gift-envelope.is-open .gift-envelope-reveal {
+  grid-template-rows: 1fr;
+  transition-delay: 0.18s;
+}
+.gift-envelope.is-open .gift-envelope-paper {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.22s, 0.24s, 0s;
+}
+.gift-envelope.is-open .gift-envelope-button {
+  margin-top: -82px;
+  transition-delay: 0.18s;
+}
+.gift-envelope.is-open .gift-envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+.gift-envelope.is-open .gift-envelope-seal {
+  opacity: 0;
+  transform: scale(0.6);
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .gift-envelope-button:hover .gift-envelope-action {
+    color: #7a4356;
+  }
+  .gift-envelope:not(.is-open) .gift-envelope-button:hover .gift-envelope-seal {
+    transform: translateY(-2px);
+  }
+}
+@media (max-width: 440px) {
+  .gift-envelope-paper {
+    padding: 24px 19px 160px;
+  }
+  .gift-envelope-paper h3 {
+    font-size: 22px;
+  }
+  .gift-envelope-paper p {
+    font-size: 13px;
+    line-height: 2;
+  }
+  .gift-envelope-art {
+    height: 174px;
+  }
+  .gift-envelope-folds {
+    height: 128px;
+  }
+  .gift-envelope-flap {
+    height: 100px;
+  }
+  .gift-envelope-seal {
+    top: 119px;
+    width: 34px;
+    height: 34px;
+    left: calc(50% - 17px);
+  }
+  .gift-envelope-button {
+    min-height: 202px;
+  }
+  .gift-envelope-recipient {
+    bottom: 15px;
+    font-size: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gift-envelope * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

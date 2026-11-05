@@ -1,0 +1,33 @@
+# 依赖与构建产物
+node_modules/
+dist/
+dist-*/
+.vite/
+*.tsbuildinfo
+coverage/
+playwright-report/
+test-results/
+
+# 本地环境变量与密钥（项目本身没有后端，这里只做兜底）
+.env*
+
+# 本地临时输出、打包与日志
+output/
+release/
+artifacts/
+*.log
+npm-debug.log*
+
+# Python 生成脚本的缓存
+__pycache__/
+*.pyc
+
+# Vercel CLI 本地状态
+.vercel/
+
+# 操作系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

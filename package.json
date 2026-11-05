@@ -1,0 +1,42 @@
+{
+  "name": "island-resort",
+  "version": "1.0.0",
+  "description": "一座可以散步、看海、庆祝的小岛：用 React Three Fiber 做的 3D 旅行纪念页模板",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "check": "npm run test && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "assets:images": "python scripts/generate_examples.py",
+    "assets:music": "python scripts/generate_music.py"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
+    "@react-three/postprocessing": "^3.1.3",
+    "lucide-react": "^0.468.0",
+    "postprocessing": "^6.39.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.3",
+    "prettier": "^3.6.2",
+    "three-stdlib": "^2.36.1",
+    "tsx": "^4.20.5",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7"
+  }
+}
